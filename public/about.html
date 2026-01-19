@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediVibe</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#00bcd4" />
+</head>
+
+<body>
+
+ <header class="topbar">
+  <div class="brand">
+    <img src="/images/medivibe-icon.png" alt="MediVibe" class="navLogo">
+    <div>
+      <div class="brandName">MediVibe</div>
+      <div class="brandSub">Medication Companion</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/dashboard.html" class="showIfLogin">Dashboard</a>
+    <a href="/medications.html" class="showIfLogin">Medications</a>
+    <a href="/reminders.html" class="showIfLogin">Reminders <span class="navBadge" id="navPendingBadge" style="display:none;">0</span></a>
+    <a href="/history.html" class="showIfLogin">History</a>
+    <a href="/profile.html" class="showIfLogin">Profile</a>
+    <a href="/settings.html" class="showIfLogin">Settings</a>
+
+    <a class="pill" href="#" id="navLogin">Login</a>
+    <a class="pill ghost showIfLogin" href="#" id="navLogout" style="display:none;">Logout</a>
+    <span class="navUser showIfLogin" id="navUser"></span>
+  </nav>
+</header>
+
+  <main class="page">
+    <div class="contentCard">
+      <h1>About MediVibe</h1>
+      <p class="sub">
+        MediVibe is designed to support medication routines with a calm interface, simple structure, and clear tracking.
+      </p>
+
+      <div class="divider"></div>
+
+      <h3>Why it matters</h3>
+      <p class="muted">
+        Medication adherence can be difficult when schedules are busy or instructions are complex. A consistent routine helps improve outcomes and reduces missed doses.
+      </p>
+
+      <h3>What MediVibe provides</h3>
+      <ul class="cleanList">
+        <li>Structured medication schedule by dose and time</li>
+        <li>Reminder prompts designed for clarity</li>
+        <li>Adherence history to review progress</li>
+        <li>Secure sign-in for organized access</li>
+      </ul>
+
+      <h3>Privacy</h3>
+      <p class="muted">
+        This interface is a prototype. In a production version, data protection controls and secure storage would be implemented.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="rowBtns">
+        <a class="btn2" href="/login.html">Open App</a>
+        <a class="btn2 ghost" href="/index.html">Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(() => console.log("Service Worker registered"));
+  }
+</script>
+</body>
+</html>
