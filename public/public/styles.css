@@ -1051,12 +1051,17 @@ textarea {
 }
 
 /* fix height webview */
-html.in-app,
+
+html.in-app, 
 html.in-app body {
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
+.in-app body {
+  overscroll-behavior: contain;
+}
 .in-app #app,
 .in-app .app,
 .in-app .root {
@@ -1064,5 +1069,10 @@ html.in-app body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-
+.in-app main,
+.in-app .container,
+.in-app .content,
+.in-app .page {
+  min-height: 100vh;
+}
 
