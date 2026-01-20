@@ -1018,3 +1018,15 @@ textarea {
   resize: vertical;
   min-height: 90px;
 }
+.in-app header,
+.in-app nav,
+.in-app .navbar,
+.in-app .desktop-nav {
+  display: none !important;
+}
+
+.in-app body {
+  padding-top: 0 !important;
+}
+
+
