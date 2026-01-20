@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "MediVibe",
   "short_name": "MediVibe",
@@ -18,3 +19,25 @@
     }
   ]
 }
+=======
+{
+  "name": "MediVibe",
+  "short_name": "MediVibe",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/images/medivibe-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/medivibe-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+>>>>>>> 3b750cf42e8aedadc5014c6cc83b6bf9dd9b240d

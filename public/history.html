@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 <head>
@@ -145,3 +146,152 @@
 
 </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediVibe – History</title>
+
+  <meta name="mv-require-auth" content="1" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#00bcd4" />
+
+</head>
+<body>
+
+  <header class="topbar">
+  <div class="brand">
+    <img src="/images/medivibe-icon.png" alt="MediVibe" class="navLogo">
+    <div>
+      <div class="brandName">MediVibe</div>
+      <div class="brandSub">Medication Companion</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/dashboard.html" class="showIfLogin">Dashboard</a>
+    <a href="/medications.html" class="showIfLogin">Medications</a>
+    <a href="/reminders.html" class="showIfLogin">Reminders <span class="navBadge" id="navPendingBadge" style="display:none;">0</span></a>
+    <a href="/history.html" class="showIfLogin">History</a>
+    <a href="/profile.html" class="showIfLogin">Profile</a>
+    <a href="/settings.html" class="showIfLogin">Settings</a>
+
+    <a class="pill" href="#" id="navLogin">Login</a>
+    <a class="pill ghost showIfLogin" href="#" id="navLogout" style="display:none;">Logout</a>
+    <span class="navUser showIfLogin" id="navUser"></span>
+  </nav>
+</header>
+
+
+  <main class="page">
+    <h1>History</h1>
+    <p class="sub">Review Taken and Missed logs from your reminders.</p>
+
+    <div class="grid">
+      <!-- Summary -->
+      <section class="card">
+        <h3>Summary</h3>
+        <p class="muted">Last 7 days</p>
+        <div class="divider"></div>
+
+        <div class="heroStats">
+          <div class="stat">
+            <div class="statLabel">Taken</div>
+            <div class="statValue" id="sumTaken">0</div>
+          </div>
+          <div class="stat">
+            <div class="statLabel">Missed</div>
+            <div class="statValue" id="sumMissed">0</div>
+          </div>
+          <div class="stat">
+            <div class="statLabel">Rate</div>
+            <div class="statValue" id="sumRate">0%</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="barWrap" aria-label="adherence rate">
+          <div class="bar" id="rateBar" style="width:0%;">0%</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <button class="btn2 ghost full" id="clearHistoryBtn" type="button">Clear history</button>
+        <p class="muted" style="margin-top:10px; font-size:13px;">
+          This clears logs saved in this browser only.
+        </p>
+      </section>
+
+      <!-- Table -->
+      <section class="card" style="grid-column: 1 / -1;">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div>
+            <h3 style="margin:0;">Medication logs</h3>
+            <p class="muted" style="margin-top:6px;">Filter and review your activity.</p>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <div>
+              <div class="muted" style="font-size:12px; margin-bottom:6px;">Type</div>
+              <select id="logFilter" class="inputLike">
+                <option value="all">All</option>
+                <option value="Taken">Taken</option>
+                <option value="Missed">Missed</option>
+              </select>
+            </div>
+
+            <div>
+              <div class="muted" style="font-size:12px; margin-bottom:6px;">Range</div>
+              <select id="logRange" class="inputLike">
+                <option value="7">Last 7 days</option>
+                <option value="30">Last 30 days</option>
+                <option value="all">All time</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="muted" id="logEmpty" style="display:none;">No logs yet. Mark Taken/Missed in Reminders.</p>
+
+        <div class="tableWrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Medication</th>
+                <th>Dosage</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="logList"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/main.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(() => console.log("Service Worker registered"));
+  }
+</script>
+
+</body>
+</html>
+>>>>>>> 3b750cf42e8aedadc5014c6cc83b6bf9dd9b240d

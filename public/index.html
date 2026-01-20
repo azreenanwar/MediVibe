@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 <head>
@@ -135,3 +136,142 @@
 
 </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediVibe</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#00bcd4" />
+
+</head>
+<body>
+
+  <header class="topbar">
+  <div class="brand">
+    <img src="/images/medivibe-icon.png" alt="MediVibe" class="navLogo">
+    <div>
+      <div class="brandName">MediVibe</div>
+      <div class="brandSub">Medication Companion</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/dashboard.html" class="showIfLogin">Dashboard</a>
+    <a href="/medications.html" class="showIfLogin">Medications</a>
+    <a href="/reminders.html" class="showIfLogin">Reminders <span class="navBadge" id="navPendingBadge" style="display:none;">0</span></a>
+    <a href="/history.html" class="showIfLogin">History</a>
+    <a href="/profile.html" class="showIfLogin">Profile</a>
+    <a href="/settings.html" class="showIfLogin">Settings</a>
+    <a class="pill" id="installBtn">Get the App</a>
+    <a class="pill" href="#" id="navLogin">Login</a>
+    <a class="pill ghost showIfLogin" href="#" id="navLogout" style="display:none;">Logout</a>
+    <span class="navUser showIfLogin" id="navUser"></span>
+  </nav>
+</header>
+
+  <main class="page">
+    <div class="hero">
+      <div>
+        <div class="tag">Medication routines, made simple</div>
+        <h1>Stay consistent with your medication with clarity and confidence.</h1>
+        <p class="sub">
+          MediVibe helps you organize schedules, track adherence, and stay on time with clean, calming prompts.
+        </p>
+
+        <div class="heroActions">
+          <a class="btn2" href="#" id="openAppBtn">Open App</a>
+          <a class="btn2 ghost" href="/about.html">Learn more</a>
+        </div>
+
+        <div class="chips">
+          <span class="chip">Secure access</span>
+          <span class="chip">Clear reminders</span>
+          <span class="chip">Adherence tracking</span>
+        </div>
+      </div>
+
+      <div class="heroCard">
+        <div class="heroCardHead">
+          <div class="heroCardTitle">Today</div>
+          <div class="muted">Quick overview</div>
+        </div>
+
+        <div class="heroStats">
+          <div class="stat">
+            <div class="muted">Scheduled</div>
+            <div class="statNum">3</div>
+          </div>
+          <div class="stat">
+            <div class="muted">Taken</div>
+            <div class="statNum">2</div>
+          </div>
+          <div class="stat">
+            <div class="muted">Missed</div>
+            <div class="statNum">1</div>
+          </div>
+        </div>
+
+        <div class="barWrap" style="margin-top:14px;">
+          <div class="bar" style="width:75%;">75%</div>
+        </div>
+        <div class="muted" style="margin-top:10px; font-size:13px;">
+          Adherence (sample) — insights appear here.
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:22px;">
+      <div class="card">
+        <h3>Smart schedule</h3>
+        <p>Organize medications by dose and time in a clean, readable layout.</p>
+      </div>
+      <div class="card">
+        <h3>Reminders that feel calm</h3>
+        <p>Simple prompts designed to support routine, not overwhelm it.</p>
+      </div>
+      <div class="card">
+        <h3>Adherence insights</h3>
+        <p>See what’s taken, what’s missed, and how you’re doing over time.</p>
+      </div>
+      <div class="card">
+        <h3>Secure access</h3>
+        <p>Account-based access so your information stays private and organized.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="/main.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(() => console.log("Service Worker registered"));
+  }
+</script>
+<section class="card" style="margin-top: 40px; text-align: center;">
+  <h3>Get the App</h3>
+  <p class="muted">Scan the QR code or tap the button below to download MediVibe on your phone.</p>
+  
+  <img src="/images/medivibe-qr-playstore.png" alt="Download MediVibe App QR" style="max-width: 160px; margin-top: 16px;">
+
+  <div style="margin-top: 16px;">
+    <a href="https://play.google.com/store/apps/details?id=com.yourapp.id" target="_blank">
+      <img src="/images/playstore-badge.png" alt="Get it on Google Play" style="height: 50px;">
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
+>>>>>>> 3b750cf42e8aedadc5014c6cc83b6bf9dd9b240d
