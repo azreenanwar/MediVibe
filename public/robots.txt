@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://medi-vibe-alarm.vercel.app/sitemap.xml
