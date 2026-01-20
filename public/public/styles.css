@@ -1028,5 +1028,41 @@ textarea {
 .in-app body {
   padding-top: 0 !important;
 }
+/* FORCE mobile app layout */
+.in-app header,
+.in-app nav,
+.in-app .header,
+.in-app .topbar,
+.in-app .navbar,
+.in-app .desktop,
+.in-app .desktop-nav,
+.in-app .menu {
+  display: none !important;
+}
+
+/* buang semua spacing atas */
+.in-app body,
+.in-app main,
+.in-app .container,
+.in-app .content,
+.in-app .page {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* fix height webview */
+html.in-app,
+html.in-app body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.in-app #app,
+.in-app .app,
+.in-app .root {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
 
