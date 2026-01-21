@@ -1,0 +1,9 @@
+{
+  "appId": "com.azree.medivibe",
+  "appName": "MediVibe",
+  "webDir": "public/public",
+  "server": {
+    "url": "https://medi-vibe-alarm.vercel.app",
+    "cleartext": false
+  }
+}
