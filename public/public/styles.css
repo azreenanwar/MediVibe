@@ -1075,4 +1075,49 @@ html.in-app body {
 .in-app .page {
   min-height: 100vh;
 }
+/* ===== APP MODE: buang menu desktop yang serabut ===== */
+.in-app .menu,
+.in-app .nav,
+.in-app nav,
+.in-app .nav-links,
+.in-app .desktop-menu,
+.in-app .top-menu,
+.in-app .topbar {
+  display: none !important;
+}
+.app-header{
+  padding: 14px 16px;
+  font-weight: 700;
+}
+
+.bottom-nav{
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 18px;
+  background: rgba(8,33,45,.92);
+  border: 1px solid rgba(255,255,255,.10);
+  z-index: 9999;
+}
+
+.bottom-nav .tab{
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+.bottom-nav .tab.active{
+  color: #fff;
+  background: rgba(255,255,255,.12);
+}
+
+body{ padding-bottom: 90px; }
 

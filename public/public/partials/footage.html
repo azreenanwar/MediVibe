@@ -1,11 +1,14 @@
-<footer style="margin-top:60px; color:#94a3b8; font-size:13px;">
-  <div class="page">
-    <p>
-      MediVibe is a medication management companion designed to support adherence.
-      It does not provide medical diagnosis or treatment advice.
-    </p>
-    <p style="margin-top:8px;">
-      © 2026 MediVibe. All rights reserved.
-    </p>
-  </div>
-</footer>
+<nav class="bottom-nav">
+  <a href="index.html" class="tab">Home</a>
+  <a href="dashboard.html" class="tab">Dashboard</a>
+  <a href="medications.html" class="tab">Meds</a>
+  <a href="reminders.html" class="tab">Reminders</a>
+  <a href="profile.html" class="tab">Profile</a>
+</nav>
+
+<script>
+  const current = (location.pathname.split("/").pop() || "index.html");
+  document.querySelectorAll(".bottom-nav .tab").forEach(t => {
+    if (t.getAttribute("href") === current) t.classList.add("active");
+  });
+</script>
