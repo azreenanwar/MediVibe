@@ -1,0 +1,480 @@
+/* ========= MediVibe Dark-Cyan UI (CLEAN + RESPONSIVE) ========= */
+
+*{ box-sizing: border-box; }
+
+:root{
+  --bg1:#0b1220;
+  --bg2:#020617;
+
+  --panel: rgba(15, 23, 42, .78);
+  --panel2: rgba(2, 6, 23, .78);
+  --border: rgba(255,255,255,.10);
+
+  --muted:#94a3b8;
+  --text:#e5e7eb;
+
+  --accent:#22d3ee;
+  --accent2:#06b6d4;
+}
+
+html, body{
+  margin:0;
+  min-height:100%;
+  overflow-x:hidden;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top left, var(--accent2), var(--bg2) 55%);
+}
+
+/* prevent image jadi besar gila */
+img{ max-width:100%; height:auto; display:block; }
+
+/* ===== Layout wrapper ===== */
+.page{
+  width: min(1120px, 92vw);
+  margin: 24px auto 48px;
+}
+
+/* ===== Topbar ===== */
+.topbar{
+  width: min(1120px, 92vw);
+  margin: 18px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 50;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.navLogo{
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+}
+
+.brandName{
+  font-weight: 800;
+  letter-spacing: .2px;
+  line-height: 1.1;
+}
+
+.brandSub{
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+}
+
+.nav a{
+  color: var(--muted);
+  text-decoration:none;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.nav a:hover{ color:#cbd5e1; }
+
+/* ===== LOGIN GATE (nav) ===== */
+.showIfLogin{ 
+  display:none;   /* default: hide until JS shows it after login */
+}
+
+
+/* ===== Buttons ===== */
+.btn2{
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  font-weight: 800;
+  color: #022c22;
+  text-decoration: none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition: .18s ease;
+}
+.btn2:hover{ filter: brightness(1.03); box-shadow: 0 14px 30px rgba(34,211,238,.20); }
+.btn2:active{ transform: translateY(1px); }
+
+.btn2.ghost{
+  background: rgba(30,41,59,.45);
+  color: var(--text);
+}
+
+/* ===== Typography ===== */
+.kicker{
+  display:inline-flex;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .35px;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(34,211,238,.14);
+  border: 1px solid rgba(34,211,238,.22);
+  color: #a5f3fc;
+}
+
+h1{
+  margin: 12px 0 10px;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+}
+
+.sub{
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.muted{ color: var(--muted); }
+
+/* ===== HERO ===== */
+.hero{
+  margin-top: 20px;
+  display:grid;
+  grid-template-columns: 1.25fr .9fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.heroLeft{ min-width: 0; }
+
+.heroActions{
+  margin-top: 18px;
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* trust row (buat jadi pill cantik) */
+.trustRow{
+  margin-top: 16px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.trustRow span{
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(30,41,59,.40);
+  color: #cbd5e1;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ===== Hero card ===== */
+.heroCard{
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(15,23,42,.92), rgba(2,6,23,.92));
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 18px 45px rgba(0,0,0,.35);
+  padding: 18px;
+}
+
+.heroCardTop{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.miniLogo{
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 12px;
+  flex: 0 0 auto;
+}
+
+.heroCardTitle{ font-weight: 900; }
+.heroCardSub{ font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.heroStats{
+  margin-top: 10px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+}
+
+.stat{
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(30,41,59,.35);
+}
+.statLabel{ font-size: 12px; color: var(--muted); }
+.statValue{ font-size: 22px; font-weight: 900; margin-top: 6px; }
+
+.barWrap{
+  margin-top: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(30,41,59,.35);
+  overflow:hidden;
+}
+.bar{
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #022c22;
+  font-weight: 900;
+  font-size: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right: 10px;
+}
+
+/* ===== Feature grid ===== */
+.featureGrid{
+  margin-top: 22px;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card{
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(15,23,42,.92), rgba(2,6,23,.92));
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 18px 45px rgba(0,0,0,.35);
+  padding: 18px;
+}
+
+.card h3{ margin: 0 0 8px; }
+.card p{ margin: 0; color: #cbd5e1; line-height: 1.55; }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  .hero{ grid-template-columns: 1fr; }
+  .featureGrid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px){
+  .page{
+    width: 100%;
+    margin: 0;
+    padding: 16px 14px 28px;
+  }
+
+  .topbar{
+    width: 100%;
+    margin: 0;
+    border-radius: 0 0 18px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav{
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding-bottom: 6px;
+  }
+
+  .btn2{ width: 100%; }
+}
+
+/* touch feel */
+* { touch-action: manipulation; }
+/* ===== quick polish ===== */
+.heroLeft{
+  max-width: 620px;
+}
+
+.heroCard{
+  box-shadow:
+    0 25px 55px rgba(0,0,0,.45),
+    0 0 0 1px rgba(255,255,255,.04),
+    0 0 40px rgba(34,211,238,.08);
+}
+
+.trustRow span{
+  transition: .18s ease;
+}
+
+.trustRow span:hover{
+  background: rgba(34,211,238,.18);
+  border-color: rgba(34,211,238,.35);
+  color: #e0f2fe;
+  transform: translateY(-2px);
+}
+/* ===============================
+   FINAL POLISH — PREMIUM LOOK
+   =============================== */
+
+/* hero layout balance */
+.hero{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 34px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* hero title lebih premium */
+.hero h1{
+  letter-spacing: -0.5px;
+  text-shadow: 0 4px 18px rgba(0,0,0,.35);
+}
+
+/* hero description */
+.hero .sub{
+  font-size: 17px;
+  color: #cbd5e1;
+  max-width: 520px;
+}
+
+/* buttons spacing */
+.heroActions{
+  margin-top: 18px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* trust pills glow */
+.trustRow{
+  margin-top:16px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.trustRow span{
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  font-weight:600;
+  font-size:13px;
+  color:#cbd5e1;
+  transition:.18s ease;
+}
+.trustRow span:hover{
+  background:rgba(34,211,238,.18);
+  border-color:rgba(34,211,238,.35);
+  color:#e0f2fe;
+  transform:translateY(-2px);
+}
+
+/* hero card glow */
+.heroCard{
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,255,255,.04),
+    0 0 60px rgba(34,211,238,.12);
+}
+
+/* stat cards */
+.stat{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;
+  padding:12px 16px;
+}
+
+/* progress bar nicer */
+.barWrap{
+  margin-top:14px;
+  background:rgba(255,255,255,.06);
+  border-radius:999px;
+  height:12px;
+  overflow:hidden;
+}
+.bar{
+  background:linear-gradient(90deg, #22d3ee, #06b6d4);
+  height:100%;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  color:#022c22;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right:8px;
+}
+
+/* feature cards spacing */
+.featureGrid{
+  margin-top: 34px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:20px;
+}
+
+/* feature card hover */
+.featureGrid .card{
+  transition:.25s ease;
+}
+.featureGrid .card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+}
+
+/* mobile */
+@media (max-width: 900px){
+  .hero{
+    grid-template-columns: 1fr;
+  }
+  .featureGrid{
+    grid-template-columns: 1fr;
+  }
+}
+/* FORCE Auth page look (override) */
+.authPage{ display:grid !important; place-items:center !important; min-height:calc(100vh - 140px) !important; padding:24px 0 !important; }
+.authCard{ width:min(460px,92vw) !important; padding:22px !important; }
+
+.authForm{ display:grid !important; gap:12px !important; }
+
+.field{ display:grid !important; gap:6px !important; }
+.field span{ font-size:13px !important; color:var(--muted) !important; font-weight:700 !important; }
+
+.field input{
+  width:100% !important;
+  padding:12px 14px !important;
+  border-radius:14px !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  background:rgba(2,6,23,.28) !important;
+  color:var(--text) !important;
+  outline:none !important;
+}
+
+.field input:focus{
+  border-color: rgba(34,211,238,.55) !important;
+  box-shadow: 0 0 0 4px rgba(34,211,238,.14) !important;
+}
+
+.authLinks{ display:flex !important; justify-content:space-between !important; gap:12px !important; margin-top:6px !important; }
+.link2{ color:var(--accent) !important; font-weight:800 !important; text-decoration:none !important; font-size:14px !important; }
+.link2:hover{ text-decoration:underline !important; }
+
+.error{ margin:6px 0 0 !important; color:#fb7185 !important; font-weight:700 !important; min-height:18px !important; }
+/* Hide menu that requires login */

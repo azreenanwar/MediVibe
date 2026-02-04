@@ -1,0 +1,13 @@
+<nav class="bottom-nav">
+  <a href="dashboard.html" class="tab">Home</a>
+  <a href="medications.html" class="tab">Meds</a>
+  <a href="reminders.html" class="tab">Reminders</a>
+  <a href="profile.html" class="tab">Profile</a>
+</nav>
+
+<script>
+  const current = location.pathname.split("/").pop();
+  document.querySelectorAll(".bottom-nav .tab").forEach(t => {
+    if (t.getAttribute("href") === current) t.classList.add("active");
+  });
+</script>
