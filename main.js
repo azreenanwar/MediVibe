@@ -139,6 +139,10 @@ function hydrateNav() {
 
   if (navLogin) {
     navLogin.style.display = (onAuthPage || session) ? "none" : "inline-flex";
+    // kalau link tu href="#" pastikan dia pergi login
+    if (!session && !onAuthPage && (navLogin.getAttribute("href") === "#" || !navLogin.getAttribute("href"))) {
+      navLogin.onclick = (e) => { e.preventDefault(); window.location.href = "login.html"; };
+    }
   }
 
   if (navUser) {
@@ -172,17 +176,62 @@ function bindNavPendingBadge(){
 }
 
 /* ===============================
-   Landing page
+   PWA Install (BETUL)
+   =============================== */
+let mvDeferredPrompt = null;
+
+function isStandaloneMode() {
+  // Android/Chrome: display-mode standalone
+  // iOS Safari: navigator.standalone
+  return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+}
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  mvDeferredPrompt = e;
+
+  const installBtn = document.getElementById("installBtn");
+  if (installBtn) installBtn.style.display = "inline-flex";
+});
+
+async function triggerInstall() {
+  if (!mvDeferredPrompt) return false;
+  try {
+    mvDeferredPrompt.prompt();
+    const choice = await mvDeferredPrompt.userChoice;
+    mvDeferredPrompt = null;
+    return choice?.outcome === "accepted";
+  } catch {
+    mvDeferredPrompt = null;
+    return false;
+  }
+}
+
+/* ===============================
+   Landing page (Open App)
    =============================== */
 function bindLandingButtons() {
   const openAppBtn = document.getElementById("openAppBtn");
-  if (openAppBtn) {
-    openAppBtn.onclick = (e) => {
-      e.preventDefault();
+  if (!openAppBtn) return;
+
+  openAppBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    // 1) kalau dah installed/standalone → terus masuk app flow
+    if (isStandaloneMode()) {
       const s = AUTH.getSession();
       window.location.href = s ? "dashboard.html" : "login.html";
-    };
-  }
+      return;
+    }
+
+    // 2) cuba install PWA dulu (Chrome/Edge)
+    const installed = await triggerInstall();
+    if (installed) return;
+
+    // 3) fallback: buka web app
+    const s = AUTH.getSession();
+    window.location.href = s ? "dashboard.html" : "login.html";
+  });
 }
 
 /* ===============================
@@ -824,7 +873,7 @@ function bindProfilePage(){
 
   const user = users[idx];
 
-  nameEl.value = user.name || session.name || "User";
+  if (nameEl) nameEl.value = user.name || session.name || "User";
   if (emailEl) emailEl.value = user.email || session.email || "";
 
   const p = user.profile || {};
@@ -839,7 +888,7 @@ function bindProfilePage(){
     e.preventDefault();
     setMsg("");
 
-    const newName = (nameEl.value || "").trim();
+    const newName = (nameEl?.value || "").trim();
     if (!newName){
       setMsg("Full name cannot be empty.");
       return;
@@ -887,38 +936,23 @@ function bindProfilePage(){
       AUTH.logout();
       window.location.href = "index.html";
     });
-  // ✅ show/hide semua menu ikut login
-  document.querySelectorAll(".showIfLogin").forEach(el => {
-    el.style.display = session ? "" : "none";
-  });
-
-  document.querySelectorAll(".hideIfLogin").forEach(el => {
-    el.style.display = session ? "none" : "";
-  });
   }
 }
 
 /* ===============================
-   PWA Install
+   Install button (optional)
    =============================== */
 function bindInstallPrompt(){
-  let deferredPrompt;
   const installBtn = document.getElementById("installBtn");
+  if (!installBtn) return;
 
-  window.addEventListener('beforeinstallprompt', (e) => {
+  installBtn.addEventListener("click", async (e) => {
     e.preventDefault();
-    deferredPrompt = e;
-    if (installBtn) installBtn.style.display = 'inline-block';
+    await triggerInstall();
   });
 
-  if (installBtn) {
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-    });
-  }
+  // hide by default (akan muncul bila beforeinstallprompt)
+  installBtn.style.display = mvDeferredPrompt ? "inline-flex" : "none";
 }
 
 /* ===============================
@@ -951,4 +985,14 @@ document.addEventListener("DOMContentLoaded", () => {
   bindDashboardPage();
   bindUpcomingReminders();
   bindProfilePage();
+
+  // PWA Service Worker Register
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch(err => console.log('SW Error:', err));
+    });
+  }
+
 });

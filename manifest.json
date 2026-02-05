@@ -1,20 +1,14 @@
 {
   "name": "MediVibe",
   "short_name": "MediVibe",
-  "start_url": "/index.html",
+  "description": "Medication Companion",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0f172a",
- "icons": [
-  {
-    "src": "images/medivibe-icon-256.png",
-    "sizes": "256x256",
-    "type": "image/png"
-  },
-  {
-    "src": "images/medivibe-icon-512.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }
-]
-
+  "background_color": "#020617",
+  "theme_color": "#00bcd4",
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
